@@ -1,0 +1,7 @@
+---
+
+- name: create a {{ swap_size }} swapfile
+  shell: "fallocate -l {{ swap_size }} {{ swap_file }} && mkswap {{ swap_file }} && swapon {{ swap_file }}"
+  args:
+    creates: "{{ swap_file }}"
+  become: yes

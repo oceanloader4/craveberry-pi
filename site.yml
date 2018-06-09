@@ -1,0 +1,9 @@
+---
+
+- hosts: cravers
+  gather_facts: no
+  roles:
+    - devtools
+    - db48
+    - swapfile
+    - crave_github

@@ -1,0 +1,21 @@
+---
+
+- name: install development packages (can take up to 10 minutes)
+  become: yes
+  apt:
+    name: "{{ item }}"
+    cache_valid_time: 3600
+    update_cache: yes
+  with_items:
+    - git
+    - build-essential
+    - autoconf
+    - libtool
+    - pkg-config
+    - automake
+    - libboost-all-dev
+    - libssl-dev
+    - libevent-dev
+    - libminiupnpc-dev
+# not strictly for build but it's always handy
+    - screen

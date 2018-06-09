@@ -1,0 +1,30 @@
+---
+
+- name: "download {{ db48_tar_url }}"
+  get_url:
+    url: "{{ db48_tar_url }}"
+    dest: "{{ db48_tar_path }}"
+
+- name: "extract {{ db48_tar_path }}"
+  unarchive:
+    src: "{{ db48_tar_path }}"
+    dest: "/home/{{ ansible_ssh_user }}"
+    creates: "{{ db48_src_dir }}"
+    remote_src: yes
+
+- name: configure
+  command: ../dist/configure --enable-cxx
+  args:
+    chdir: "{{ db48_src_dir }}/build_unix"
+    creates: "{{ db48_src_dir }}/build_unix/Makefile"
+
+- name: build db48
+  make:
+    chdir: "{{ db48_src_dir }}/build_unix"
+
+- name: install db48
+  make:
+    target: install
+    chdir: "{{ db48_src_dir }}/build_unix"
+  become: yes
+

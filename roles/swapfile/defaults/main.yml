@@ -1,0 +1,4 @@
+---
+
+swap_file: /var/swap2
+swap_size: 512M

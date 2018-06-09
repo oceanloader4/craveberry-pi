@@ -1,0 +1,23 @@
+---
+
+- name: checkout Crave source from github
+  git:
+    depth: 1
+    repo: https://github.com/Crave-Project/Crave-NG
+    dest: "{{ crave_src_dir }}"
+
+- name: generate configure script (couple of minutes)
+  command: ./autogen.sh
+  args:
+    chdir: "{{ crave_src_dir }}"
+    creates: "{{ crave_src_dir }}/configure"
+
+- name: run configure
+  command: "./configure --with-gui=no --with-miniupnpc=yes CPPFLAGS='-I{{ db48_dir }}/include -O2' LDFLAGS='-L{{ db48_dir }}/lib'"
+  args:
+    chdir: "{{ crave_src_dir }}"
+    creates: "{{ crave_src_dir }}/Makefile"
+
+- name: build crave (takes about an hour..)
+  make:
+    chdir: "{{ crave_src_dir }}"

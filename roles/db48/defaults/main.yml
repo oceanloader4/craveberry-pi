@@ -1,0 +1,5 @@
+---
+
+db48_tar_url: http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
+db48_tar_path: "/home/{{ ansible_ssh_user }}/db-4.8.30.NC.tar.gz"
+db48_src_dir: "/home/{{ ansible_ssh_user }}/db-4.8.30.NC"
