@@ -53,7 +53,7 @@ I thought about adding another role to setup crave.conf, etc.
 But then you'd be trusting me to configure your masternode, which
 I doubt you'd be happy with.
 
-But you can pick this up on page 8 of [the setup guide|https://crave.cc/pdf/Complete_Masternode_Guide_for_Crave_NextGen.pdf].
+But you can pick this up on page 8 of [the setup guide](https://crave.cc/pdf/Complete_Masternode_Guide_for_Crave_NextGen.pdf).
 
 I'll add a systemd role soon, to keep craved running on crashes, etc.
 
